@@ -1,4 +1,4 @@
-name: Scheduled weekly milestones
+name: Scheduled Weekly Milestones
 description: Automatically create GitHub milestones on a schedule.
 
 inputs:
