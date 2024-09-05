@@ -36848,10 +36848,8 @@ __nccwpck_require__.r(date_fns_namespaceObject);
 
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
-var core_default = /*#__PURE__*/__nccwpck_require__.n(core);
 // EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
 var github = __nccwpck_require__(5438);
-var github_default = /*#__PURE__*/__nccwpck_require__.n(github);
 ;// CONCATENATED MODULE: ./node_modules/date-fns/index.mjs
 // This file is generated automatically by `scripts/build/indices.ts`. Please, don't change it.
 
@@ -37122,16 +37120,16 @@ function addDate(date, count) {
 }
 
 async function run() {
-  const token = core_default().getInput('token');
-  const octokit = github_default().getOctokit(token);
+  const token = core.getInput('token');
+  const octokit = github.getOctokit(token);
 
-  const baseTitle = core_default().getInput('title');
-  const days = core_default().getInput('days').split(',');
-  const dateOpts = core_default().getInput('date_options') && JSON.parse(core_default().getInput('date_options'));
+  const baseTitle = core.getInput('title');
+  const days = core.getInput('days').split(',');
+  const dateOpts = core.getInput('date_options') && JSON.parse(core.getInput('date_options'));
 
-  const count = core_default().getInput('count');
-  const format = core_default().getInput('format');
-  const locale = core_default().getInput('locale');
+  const count = core.getInput('count');
+  const format = core.getInput('format');
+  const locale = core.getInput('locale');
 
   const promises = [];
 
@@ -37155,7 +37153,7 @@ async function run() {
 
           octokit.rest.issues
             .createMilestone({
-              ...(github_default()).context.repo,
+              ...github.context.repo,
               title,
               due_on: date,
             })
@@ -37179,13 +37177,13 @@ async function run() {
     milestones.push(url);
   });
 
-  core_default().setOutput('milestones', milestones);
+  core.setOutput('milestones', milestones);
 }
 
 try {
   run();
 } catch (err) {
-  core_default().setFailed(err.message);
+  core.setFailed(err.message);
 }
 
 })();
