@@ -54089,7 +54089,7 @@ async function run() {
           if (dateOpts) {
             title += ` (${date.toLocaleDateString(locale || undefined, dateOpts)})`;
           } else {
-            console.log(parse(locale))
+            console.log(locale, parse(locale), moment_default()(date).locale(parse(locale).language).format(format))
             title += moment_default()(date).locale(parse(locale).language).format(format);
           }
 
