@@ -1,5 +1,6 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
+import {parse} from 'bcp-47';
 import * as datefns from 'date-fns';
 import moment from 'moment';
 
@@ -44,7 +45,7 @@ async function run() {
           if (dateOpts) {
             title += ` (${date.toLocaleDateString(locale || undefined, dateOpts)})`;
           } else {
-            title += moment(date).locale(locale).format(format);
+            title += moment(date).locale(parse(locale).language).format(format);
           }
 
           octokit.rest.issues
