@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Test Scheduled Milestones
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Schedule Milestones
         uses: ./ # Use the action in the root directory
@@ -17,6 +17,25 @@ jobs:
           title: Up for Review
           days: Tuesday,Thursday
           date_options: '{"month": "long", "day": "numeric"}'
+
+      - name: Created Milestones
+        run: echo ${{ steps.scheduled.outputs.milestones }}
+
+  create_milestones_with_locale_job:
+    runs-on: ubuntu-latest
+    name: Test Scheduled Milestones with locale
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Schedule Milestones
+        uses: ./ # Use the action in the root directory
+        id: scheduled
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: На рассмотрении
+          days: Tuesday,Thursday
+          date_options: '{"month": "long", "day": "numeric"}'
+          locale: 'ru-RU'
 
       - name: Created Milestones
         run: echo ${{ steps.scheduled.outputs.milestones }}
