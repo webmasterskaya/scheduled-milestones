@@ -25,6 +25,7 @@ async function run() {
 
   const count = core.getInput('count');
   const format = core.getInput('format');
+  const locale = core.getInput('locale');
 
   const promises = [];
 
@@ -41,9 +42,9 @@ async function run() {
 
           let title = baseTitle;
           if (dateOpts) {
-            title += ` (${date.toLocaleDateString(undefined, dateOpts)})`;
+            title += ` (${date.toLocaleDateString(locale || undefined, dateOpts)})`;
           } else {
-            title += moment(date).format(format);
+            title += moment(date).locale(locale).format(format);
           }
 
           octokit.rest.issues
