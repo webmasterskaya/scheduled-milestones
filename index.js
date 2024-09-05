@@ -20,9 +20,8 @@ async function run() {
   const token = core.getInput('token');
   const octokit = github.getOctokit(token);
 
-  const baseTitle = core.getInput('title');
-  const days = core.getInput('days').split(',');
-  const dateOpts = core.getInput('date_options') && JSON.parse(core.getInput('date_options'));
+    const baseTitle = core.getInput('title', {trimWhitespace: false});
+    const days = core.getInput('days').split(',');
 
   const count = core.getInput('count');
   const format = core.getInput('format');
