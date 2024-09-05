@@ -52,6 +52,13 @@ Note: `YYYY.MM.DD`.
 * *Required*: `No`
 * *Type*: `string`
 
+### locale
+
+This option allows you to control what locale will be set for the date in your milestone names. A string with a BCP 47 language tag. Corresponds to the locales parameter of the `Intl.DateTimeFormat()` constructor. Check out the [docs on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) for `toLocaleDateString` for details.
+
+* *Required*: `No`
+* *Type*: `string`
+
 ## Output
 
 ### milestones
