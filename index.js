@@ -1,7 +1,7 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
-const datefns = require('date-fns');
-const moment = require('moment');
+import core from '@actions/core';
+import github from '@actions/github';
+import datefns from 'date-fns';
+import moment from 'moment';
 
 const WEEK = 7;
 
