@@ -2,9 +2,7 @@
 
 A GitHub action that can auto-create weekly milestones.
 
-The folks at [ReadMe](https://readme.com/) utilized this to internally organize our weekly releases.
-
-This action is similar to [github-action-milestone-schedule](https://github.com/MrGossett/github-action-milestone-schedule) but offers some friendlier configuration options.
+This action is fork of GitHub Action [scheduled-milestones](https://github.com/marketplace/actions/scheduled-milestones) but has a wider range of options and up-to-date code.
 
 ## Options
 
@@ -29,7 +27,7 @@ A comma-separated list of the days of the upcoming week that you want milestones
 
 This option allows you to control how the dates in your milestone titles should look. The options here should be a JSON-encoded string of the options that you would normally supply to `Date.toLocaleDateString()`. Check out the [docs on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) for `toLocaleDateString` for details.
 
-Note: If you do not configure this, the default format for dates in in your milestones will look like `M/D/YYYY`.
+Note: If you do not configure this, the default format for dates in your milestones will look like `M/D/YYYY`.
 
 * *Required*: `Yes`
 * *Type*: `string`
@@ -78,16 +76,17 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Schedule Milestones
-        uses: readmeio/scheduled-milestones@v1
+        uses: webmasterskaya/scheduled-weekly-milestones@v2
         id: scheduled
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: Up for Review
+          title: "Up for Review "
           days: Tuesday,Thursday
           date_options: {"month": "long", "day": "numeric"}
+          locale: 'ru-RU'
 
       - name: Created Milestones
         run: echo ${{ steps.scheduled.outputs.milestones }}
@@ -104,9 +103,9 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: readmeio/scheduled-milestones@v1.1
+      - uses: webmasterskaya/scheduled-weekly-milestones@v2
         id: run
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -118,3 +117,5 @@ jobs:
       - name: result
         run: echo ${{ steps.run.outputs.milestones }}
 ```
+
+For example, you can also look at the files [auto-create-milestone.yaml](.github/workflows/auto-create-milestone.yaml) and [scheduled-milestones.yml](.github/workflows/scheduled-milestones.yml)
