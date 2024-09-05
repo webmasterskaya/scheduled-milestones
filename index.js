@@ -2,7 +2,7 @@ import * as core from '@actions/core';
 import * as github from '@actions/github';
 import {parse} from 'bcp-47';
 import * as datefns from 'date-fns';
-import moment from 'moment';
+import moment from 'moment/min/moment-with-locales';
 
 const WEEK = 7;
 
