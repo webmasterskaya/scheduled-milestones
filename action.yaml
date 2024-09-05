@@ -22,6 +22,9 @@ inputs:
   format:
     description: Date format. `YYYY.MM.DD`
     required: false
+  locale:
+    description: Locales parameter for `Date.toLocaleDateString()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString for details.
+    required: false
 
 outputs:
   milestones:
