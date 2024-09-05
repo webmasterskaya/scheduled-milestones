@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
-import datefns from 'date-fns';
+import * as datefns from 'date-fns';
 import moment from 'moment';
 
 const WEEK = 7;
