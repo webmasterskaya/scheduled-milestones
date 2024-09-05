@@ -66873,7 +66873,6 @@ async function run() {
           if (dateOpts) {
             title += ` (${date.toLocaleDateString(locale || undefined, dateOpts)})`;
           } else {
-            console.log(moment_with_locales_default().locale(), moment_with_locales_default().locale(parse(locale).language), moment_with_locales_default().locale())
             title += moment_with_locales_default()(date).locale(parse(locale).language).format(format);
           }
 
