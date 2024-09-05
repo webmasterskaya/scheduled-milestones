@@ -1,5 +1,5 @@
 {
-  "name": "scheduled-milestones",
+  "name": "scheduled-weekly-milestones",
   "version": "2.0.0",
   "description": "A GitHub action to auto-create milestones on a schedule.",
   "main": "index.js",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/webmasterskaya/scheduled-milestones.git"
+    "url": "git+https://github.com/webmasterskaya/scheduled-weekly-milestones.git"
   },
   "bugs": {
-    "url": "https://github.com/webmasterskaya/scheduled-milestones/issues"
+    "url": "https://github.com/webmasterskaya/scheduled-weekly-milestones/issues"
   },
-  "homepage": "https://github.com/webmasterskaya/scheduled-milestones#readme",
+  "homepage": "https://github.com/webmasterskaya/scheduled-weekly-milestones#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^6.0.0",
