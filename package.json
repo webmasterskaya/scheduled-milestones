@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/readmeio/scheduled-milestones.git"
+    "url": "git+https://github.com/webmasterskaya/scheduled-milestones.git"
   },
   "bugs": {
-    "url": "https://github.com/readmeio/scheduled-milestones/issues"
+    "url": "https://github.com/webmasterskaya/scheduled-milestones/issues"
   },
-  "homepage": "https://github.com/readmeio/scheduled-milestones#readme",
+  "homepage": "https://github.com/webmasterskaya/scheduled-milestones#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^6.0.0",
