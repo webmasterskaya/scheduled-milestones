@@ -22,15 +22,18 @@ inputs:
   format:
     description: Date format. `YYYY.MM.DD`
     required: false
+  locale:
+    description: Locales parameter for `Date.toLocaleDateString()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString for details.
+    required: false
 
 outputs:
   milestones:
     description: 'The URLs of the newly created milestones (if any were created)'
 
 runs:
-  using: node16
+  using: node20
   main: dist/index.js
 
 branding:
   icon: calendar
-  color: blue
+  color: orange

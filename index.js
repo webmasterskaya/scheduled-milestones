@@ -1,7 +1,8 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
-const datefns = require('date-fns');
-const moment = require('moment');
+import * as core from '@actions/core';
+import * as github from '@actions/github';
+import {parse} from 'bcp-47';
+import * as datefns from 'date-fns';
+import moment from 'moment/min/moment-with-locales';
 
 const WEEK = 7;
 
@@ -25,6 +26,7 @@ async function run() {
 
   const count = core.getInput('count');
   const format = core.getInput('format');
+  const locale = core.getInput('locale');
 
   const promises = [];
 
@@ -41,9 +43,9 @@ async function run() {
 
           let title = baseTitle;
           if (dateOpts) {
-            title += ` (${date.toLocaleDateString(undefined, dateOpts)})`;
+            title += ` (${date.toLocaleDateString(locale || undefined, dateOpts)})`;
           } else {
-            title += moment(date).format(format);
+            title += moment(date).locale(parse(locale).language).format(format);
           }
 
           octokit.rest.issues

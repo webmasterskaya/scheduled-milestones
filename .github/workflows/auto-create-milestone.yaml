@@ -6,16 +6,34 @@ jobs:
   auto-create-milestone:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - uses: ./
         id: run
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           title: d-
+          token: ${{ secrets.GITHUB_TOKEN }}
           days: Friday
           count: 4
-          format: YYYY.MM.DD
+          format: ll
+
+      - name: result
+        run: echo ${{ steps.run.outputs.milestones }}
+
+  auto-create-milwstone-with-locales:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+        id: run
+        with:
+          title: d-
+          token: ${{ secrets.GITHUB_TOKEN }}
+          days: Friday
+          count: 4
+          format: ll
+          locale: 'ru-RU'
 
       - name: result
         run: echo ${{ steps.run.outputs.milestones }}
