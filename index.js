@@ -45,7 +45,7 @@ async function run() {
           if (dateOpts) {
             title += ` (${date.toLocaleDateString(locale || undefined, dateOpts)})`;
           } else {
-            console.log(locale, parse(locale), moment(date).locale(parse(locale).language).format(format))
+            console.log(moment.locale(), moment.locale(parse(locale).language), moment.locale())
             title += moment(date).locale(parse(locale).language).format(format);
           }
 
