@@ -25,6 +25,12 @@ inputs:
   locale:
     description: Locales parameter for `Date.toLocaleDateString()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString for details.
     required: false
+  owner:
+    description: The repository owner. If you need to create milestone in a repository different from the current one
+    required: false
+  repo:
+    description: The repository name. If you need to create milestone in a repository different from the current one
+    required: false
 
 outputs:
   milestones:
