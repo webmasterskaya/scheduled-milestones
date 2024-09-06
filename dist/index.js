@@ -66858,6 +66858,9 @@ async function run() {
     const format = core.getInput('format', {required: false});
     const locale = core.getInput('locale', {required: false});
 
+    const owner = core.getInput('owner', {required: false}) || github.context.repo.owner;
+    const repo = core.getInput('repo', {required: false}) || github.context.repo.repo;
+
     const promises = [];
 
     for (let i = 0; i < count; i += 1) {
@@ -66880,7 +66883,8 @@ async function run() {
 
                     octokit.rest.issues
                         .createMilestone({
-                            ...github.context.repo,
+                            owner,
+                            repo,
                             title,
                             due_on: date,
                         })
