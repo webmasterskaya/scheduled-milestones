@@ -1,0 +1,84 @@
+name: Continuous Integration
+
+on: [push]
+
+jobs:
+  date-format-milestone:
+    name: Test date format and whitespaces in title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+        name: Create Milestones
+        id: run
+        with:
+          title: "To "
+          token: ${{ secrets.GITHUB_TOKEN }}
+          days: Friday
+          count: 2
+          format: ll
+
+      - name: Result
+        run: echo ${{ steps.run.outputs.milestones }}
+
+  date-format-milestone-with-locales:
+    name: Test date format and whitespaces in title with locales
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+        name: Create Milestones
+        id: run
+        with:
+          title: "До "
+          token: ${{ secrets.GITHUB_TOKEN }}
+          days: Friday
+          count: 4
+          format: ll
+          locale: 'ru-RU'
+
+      - name: Result
+        run: echo ${{ steps.run.outputs.milestones }}
+
+  date-options-milestones:
+    name: Test date options and remote repository milestone
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+        name: Create Milestones
+        id: run
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+          title: Up for Review
+          days: Tuesday,Thursday
+          date_options: '{"month": "long", "day": "numeric"}'
+          owner: webmasterskaya
+          repo: scheduled-weekly-milestones-tests
+
+      - name: Result
+        run: echo ${{ steps.run.outputs.milestones }}
+
+  date-options-milestones-with-locales:
+    name: Test date options and remote repository milestone with locales
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./
+        name: Create Milestones
+        id: run
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
+          title: На рассмотрении
+          days: Tuesday,Thursday
+          date_options: '{"month": "long", "day": "numeric"}'
+          owner: webmasterskaya
+          repo: scheduled-weekly-milestones-tests
+          locale: 'ru-RU'
+
+      - name: Result
+        run: echo ${{ steps.run.outputs.milestones }}
