@@ -27,7 +27,8 @@ A comma-separated list of the days of the upcoming week that you want milestones
 
 This option allows you to control how the dates in your milestone titles should look. The options here should be a JSON-encoded string of the options that you would normally supply to `Date.toLocaleDateString()`. Check out the [docs on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) for `toLocaleDateString` for details.
 
-Note: If you do not configure this, the default format for dates in your milestones will look like `M/D/YYYY`.
+> [!NOTE]  
+> If you do not configure this, the default format for dates in your milestones will look like `M/D/YYYY`.
 
 * *Required*: `Yes`
 * *Type*: `string`
@@ -56,6 +57,23 @@ This option allows you to control what locale will be set for the date in your m
 
 * *Required*: `No`
 * *Type*: `string`
+
+### owner
+
+The repository owner. If you need to create milestone in a repository different from the current one
+
+* *Required*: `No`
+* *Type*: `string`
+
+### repo
+
+The repository name. If you need to create milestone in a repository different from the current one
+
+* *Required*: `No`
+* *Type*: `string`
+
+> [!NOTE]  
+> If you need to create milestone in a repository different from the current one, you need to pass a token that has access to the current and remote repositories
 
 ## Output
 
@@ -90,32 +108,6 @@ jobs:
 
       - name: Created Milestones
         run: echo ${{ steps.scheduled.outputs.milestones }}
-```
-
-```yaml
-name: auto-create-milestone
-
-on:
-  schedule:
-    - cron: 0 0 * * SAT
-
-jobs:
-  generate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: webmasterskaya/scheduled-weekly-milestones@v2
-        id: run
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          title: d-
-          days: Friday
-          count: 4
-          format: YYYY.MM.DD
-
-      - name: result
-        run: echo ${{ steps.run.outputs.milestones }}
 ```
 
 For example, you can also look at the file [continuous-integration.yml](.github/workflows/continuous-integration.yml)
