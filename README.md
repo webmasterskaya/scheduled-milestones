@@ -118,4 +118,4 @@ jobs:
         run: echo ${{ steps.run.outputs.milestones }}
 ```
 
-For example, you can also look at the files [auto-create-milestone.yaml](.github/workflows/auto-create-milestone.yaml) and [scheduled-milestones.yml](.github/workflows/scheduled-milestones.yml)
+For example, you can also look at the file [continuous-integration.yml](.github/workflows/continuous-integration.yml)
